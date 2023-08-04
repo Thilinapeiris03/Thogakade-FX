@@ -46,6 +46,8 @@ public class ItemController implements Initializable {
         pstm.setObject(3,item.getUnitPrice());
         pstm.setObject(4,item.getQtyOnHand());
         int i =pstm.executeUpdate();
+        loadTable();
+
         if(i>0) {
             System.out.println("Added Success");
             JOptionPane.showMessageDialog(null, "Added Success");
@@ -96,6 +98,10 @@ public class ItemController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        loadTable();
+    }
+
+    public void loadTable(){
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
@@ -107,7 +113,7 @@ public class ItemController implements Initializable {
         try {
             connection = DBConnection.getInstance().getConnection();
 
-        Statement statement=connection.createStatement();
+            Statement statement=connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
             while(resultSet.next()){
                 Item item = new Item(resultSet.getString(1), resultSet.getString(2),resultSet.getDouble(3), resultSet.getInt(4));
