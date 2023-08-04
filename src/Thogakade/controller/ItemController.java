@@ -99,6 +99,20 @@ public class ItemController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadTable();
+        tblItem.getSelectionModel().selectedItemProperty().addListener((observable,
+                                                                            oldValue,
+                                                                            newValue) -> {
+            if(newValue!=null) {
+                setTableValuesToTxt((Item) newValue);
+            }
+          });
+    }
+
+    private void setTableValuesToTxt(Item newValue) {
+        txtItemcode.setText(newValue.getItemCode());
+        txtDescription.setText(newValue.getDescription());
+        txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+        txtQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
     }
 
     public void loadTable(){

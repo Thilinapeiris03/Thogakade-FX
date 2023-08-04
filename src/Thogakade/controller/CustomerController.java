@@ -2,6 +2,7 @@ package Thogakade.controller;
 
 import Thogakade.db.DBConnection;
 import Thogakade.model.Customer;
+import Thogakade.model.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -95,6 +96,24 @@ public class CustomerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        loadTable();
+        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable,
+                                                                        oldValue,
+                                                                        newValue) -> {
+            if(newValue!=null) {
+                setTableValuesToTxt((Customer) newValue);
+            }
+        });
+    }
+
+    private void setTableValuesToTxt(Customer newValue) {
+        txtId.setText(newValue.getId());
+        txtName.setText(newValue.getName());
+        txtAddress.setText(newValue.getAddress());
+        txtSalary.setText(newValue.getSalary());
+    }
+
+    public void loadTable(){
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -115,9 +134,5 @@ public class CustomerController implements Initializable {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void loadTable(){
-
     }
 }

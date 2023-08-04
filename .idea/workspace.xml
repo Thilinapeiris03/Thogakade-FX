@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0da921-479e-4881-ba93-186e9152e016" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Thogakade-AP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/DashBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/ItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/db/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/model/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/CustomerForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/ItemForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/MainDashBoard.fxml" afterDir="false" />
+    <list default="true" id="1f0da921-479e-4881-ba93-186e9152e016" name="Changes" comment="Second">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/ItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thogakade/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thogakade/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/controller/ItemController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +79,20 @@
       <option name="presentableId" value="Default" />
       <updated>1691119951060</updated>
     </task>
+    <task id="LOCAL-00001" summary="Second">
+      <option name="closed" value="true" />
+      <created>1691144577742</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691144577742</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Second" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Thogakade_AP$Main.ic" NAME="Main Coverage Results" MODIFIED="1691131644277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
