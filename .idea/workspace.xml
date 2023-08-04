@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f0da921-479e-4881-ba93-186e9152e016" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Thogakade-AP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/DashBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/ItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/db/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/model/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/CustomerForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/ItemForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/MainDashBoard.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2TVEfMCJor0dPutGnq3PE2OH0IU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "F:/ICET - ICM 103/IntelliJ Projects/Thogakade-AP/src/Thogakade/lib/mysql-connector-java-8.0.11.jar",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\ICET - ICM 103\IntelliJ Projects\Thogakade-AP\src\Thogakade\lib" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Thogakade.Main" />
+      <module name="Thogakade-AP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Thogakade.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f0da921-479e-4881-ba93-186e9152e016" name="Changes" comment="" />
+      <created>1691119951060</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691119951060</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Thogakade_AP$Main.ic" NAME="Main Coverage Results" MODIFIED="1691131644277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Thogakade.*</FILTER>
+    </SUITE>
+  </component>
+</project>
