@@ -22,9 +22,7 @@ public class DashBoardController {
 
         Parent load = (Parent) FXMLLoader.load(resource);
         this.root.getChildren().clear();
-        boolean add;
-        if (this.root.getChildren().add(load)) add = true;
-        else add = false;
+        this.root.getChildren().add(load);
     }
 
 
@@ -40,9 +38,7 @@ public class DashBoardController {
 
         Parent load = (Parent) FXMLLoader.load(resource);
         this.root.getChildren().clear();
-        boolean add;
-        if (this.root.getChildren().add(load)) add = true;
-        else add = false;
+        this.root.getChildren().add(load);
     }
 
     public void btnExitOnAction(ActionEvent actionEvent) {

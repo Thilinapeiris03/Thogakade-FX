@@ -46,6 +46,7 @@ public class CustomerController implements Initializable {
         pstm.setObject(3,customer.getAddress());
         pstm.setObject(4,customer.getSalary());
         int i =pstm.executeUpdate();
+        loadTable();
         if(i>0) {
             System.out.println("Added Success");
             JOptionPane.showMessageDialog(null, "Added Success");
@@ -74,9 +75,10 @@ public class CustomerController implements Initializable {
         pstm.setObject(3,customer.getSalary());
         pstm.setObject(4,customer.getId());
         int i =pstm.executeUpdate();
+        loadTable();
         if(i>0) {
-            System.out.println("Added Success");
-            JOptionPane.showMessageDialog(null, "Added Success");
+            System.out.println("Update Success");
+            JOptionPane.showMessageDialog(null, "Update Success");
         }else {
             System.out.println("Failed");
 
@@ -89,6 +91,11 @@ public class CustomerController implements Initializable {
 
             JOptionPane.showMessageDialog(null,"Delete Success");
         }
+        loadTable();
+        txtId.setText(null);
+        txtName.setText(null);
+        txtAddress.setText(null);
+        txtSalary.setText(null);
     }
 
     public void btnRefreshOnAction(ActionEvent actionEvent) {
@@ -110,7 +117,7 @@ public class CustomerController implements Initializable {
         txtId.setText(newValue.getId());
         txtName.setText(newValue.getName());
         txtAddress.setText(newValue.getAddress());
-        txtSalary.setText(newValue.getSalary());
+        txtSalary.setText(String.valueOf(newValue.getSalary()));
     }
 
     public void loadTable(){
