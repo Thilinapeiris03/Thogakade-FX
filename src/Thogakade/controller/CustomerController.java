@@ -29,31 +29,37 @@ public class CustomerController implements Initializable {
     public TableView tblCustomer;
 
     public void btnAddOnACtion(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String id=txtId.getText();
-        String name=txtName.getText();
-        String address=txtAddress.getText();
-        double salary=Double.parseDouble(txtSalary.getText());
+        try{
+            String id=txtId.getText();
+            String name=txtName.getText();
+            String address=txtAddress.getText();
+            double salary=Double.parseDouble(txtSalary.getText());
 
-        //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
+            //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
 
-        Customer customer=new Customer(id,name,address,salary);
-        Connection connection= DBConnection.getInstance().getConnection();
-        String SQL="Insert into Customer Values(?,?,?,?)";
-        PreparedStatement pstm=connection.prepareStatement(SQL);
+            Customer customer = new Customer(id, name, address, salary);
+            Connection connection = DBConnection.getInstance().getConnection();
+            String SQL = "Insert into Customer Values(?,?,?,?)";
+            PreparedStatement pstm = connection.prepareStatement(SQL);
 
-        pstm.setObject(1,customer.getId());
-        pstm.setObject(2,customer.getName());
-        pstm.setObject(3,customer.getAddress());
-        pstm.setObject(4,customer.getSalary());
-        int i =pstm.executeUpdate();
-        loadTable();
-        if(i>0) {
-            System.out.println("Added Success");
-            JOptionPane.showMessageDialog(null, "Added Success");
-        }else {
-            System.out.println("Failed");
+            pstm.setObject(1, customer.getId());
+            pstm.setObject(2, customer.getName());
+            pstm.setObject(3, customer.getAddress());
+            pstm.setObject(4, customer.getSalary());
+            int i = pstm.executeUpdate();
+            loadTable();
+            if (i > 0) {
+                System.out.println("Added Success");
+                JOptionPane.showMessageDialog(null, "Added Success");
+            } else {
+                System.out.println("Failed");
 
+            }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Added Failed");
         }
+
+
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

@@ -29,33 +29,38 @@ public class ItemController implements Initializable {
     public TableView tblItem;
 
     public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String code=txtItemcode.getText();
-        String description=txtDescription.getText();
-        double unitPrice= Double.parseDouble(txtUnitPrice.getText());
-        int qtyOnHand= (int) Double.parseDouble(txtQtyOnHand.getText());
+        try{
+            String code=txtItemcode.getText();
+            String description=txtDescription.getText();
+            double unitPrice= Double.parseDouble(txtUnitPrice.getText());
+            int qtyOnHand= (int) Double.parseDouble(txtQtyOnHand.getText());
 
-        //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
+            //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
 
-        Item item=new Item(code,description,unitPrice,qtyOnHand);
-        Connection connection= DBConnection.getInstance().getConnection();
-        String SQL="Insert into Item Values(?,?,?,?)";
-        PreparedStatement pstm=connection.prepareStatement(SQL);
+            Item item=new Item(code,description,unitPrice,qtyOnHand);
+            Connection connection= DBConnection.getInstance().getConnection();
+            String SQL="Insert into Item Values(?,?,?,?)";
+            PreparedStatement pstm=connection.prepareStatement(SQL);
 
-        pstm.setObject(1,item.getItemCode());
-        pstm.setObject(2,item.getDescription());
-        pstm.setObject(3,item.getUnitPrice());
-        pstm.setObject(4,item.getQtyOnHand());
-        int i =pstm.executeUpdate();
-        loadTable();
-        tblItem.refresh();
+            pstm.setObject(1,item.getItemCode());
+            pstm.setObject(2,item.getDescription());
+            pstm.setObject(3,item.getUnitPrice());
+            pstm.setObject(4,item.getQtyOnHand());
+            int i =pstm.executeUpdate();
+            loadTable();
+            tblItem.refresh();
 
-        if(i>0) {
-            System.out.println("Added Success");
-            JOptionPane.showMessageDialog(null, "Added Success");
-        }else {
-            System.out.println("Failed");
+            if(i>0) {
+                System.out.println("Added Success");
+                JOptionPane.showMessageDialog(null, "Added Success");
+            }else {
+                System.out.println("Failed");
 
+            }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null,"Added Failed...");
         }
+
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
