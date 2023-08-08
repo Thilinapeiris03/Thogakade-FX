@@ -8,20 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="750.0" prefWidth="627.0" style="-fx-background-color: #a4b0be;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Thogakade.controller.CustomerController">
+<AnchorPane prefHeight="750.0" prefWidth="660.0" style="-fx-background-color: #a4b0be;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Thogakade.controller.CustomerController">
    <children>
-      <Label alignment="CENTER" layoutX="-6.0" prefHeight="85.0" prefWidth="633.0" style="-fx-background-color: #747d8c;" text="Customer Form">
+      <Label alignment="CENTER" layoutX="-6.0" prefHeight="85.0" prefWidth="667.0" style="-fx-background-color: #747d8c;" text="Customer Form">
          <font>
             <Font name="Calibri Bold" size="47.0" />
          </font>
       </Label>
-      <TableView fx:id="tblCustomer" layoutX="16.0" layoutY="292.0" prefHeight="293.0" prefWidth="595.0">
+      <TableView fx:id="tblCustomer" layoutX="16.0" layoutY="292.0" prefHeight="293.0" prefWidth="632.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="145.0" text="Customer ID" />
-          <TableColumn fx:id="colName" prefWidth="141.0" text="Name" />
-            <TableColumn fx:id="colAddress" prefWidth="157.0" text="Address" />
-            <TableColumn fx:id="colSalary" prefWidth="151.0" text="Salary" />
+          <TableColumn fx:id="colId" prefWidth="170.0" text="Customer ID" />
+          <TableColumn fx:id="colName" prefWidth="138.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="176.0" text="Address" />
+            <TableColumn fx:id="colSalary" prefWidth="146.0" text="Salary" />
         </columns>
       </TableView>
       <TextField fx:id="txtId" layoutX="64.0" layoutY="118.0" prefHeight="44.0" prefWidth="206.0" promptText="Customer ID" style="-fx-background-color: #dfe4ea;" />
@@ -29,8 +28,8 @@
       <TextField fx:id="txtName" layoutX="328.0" layoutY="118.0" prefHeight="44.0" prefWidth="206.0" promptText="Name" style="-fx-background-color: #dfe4ea;" />
       <TextField fx:id="txtSalary" layoutX="328.0" layoutY="204.0" prefHeight="44.0" prefWidth="206.0" promptText="Salary" style="-fx-background-color: #dfe4ea;" />
       <Button layoutX="81.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnAddOnACtion" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Add" textFill="WHITE" />
-      <Button layoutX="204.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Update" textFill="WHITE" />
-      <Button layoutX="330.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Delete" textFill="WHITE" />
-      <Button layoutX="454.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Refresh" textFill="WHITE" />
+      <Button layoutX="220.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Update" textFill="WHITE" />
+      <Button layoutX="357.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Delete" textFill="WHITE" />
+      <Button layoutX="500.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Refresh" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0da921-479e-4881-ba93-186e9152e016" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/controller/OrderFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/model/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/model/OrderDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Thogakade/view/OrderForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/CustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/DashBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/DashBoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/controller/ItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/view/CustomerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/view/ItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/view/ItemForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/view/MainDashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade-AP/Thogakade/view/MainDashBoard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Thogakade/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Thogakade/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thogakade/controller/DashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/controller/DashBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thogakade/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/view/CustomerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thogakade/view/ItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/view/ItemForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Thogakade/view/MainDashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Thogakade/view/MainDashBoard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +64,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "F:/ICET - ICM 103/IntelliJ Projects/ThogaKade",
+    "last_opened_file_path": "F:/ICET - ICM 103/IntelliJ Projects/Thogakade-AP",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -123,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691232049023</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit">
+      <option name="closed" value="true" />
+      <created>1691315159645</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1691315159645</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

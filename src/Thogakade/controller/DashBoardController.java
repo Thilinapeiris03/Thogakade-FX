@@ -28,7 +28,13 @@ public class DashBoardController {
 
 
     public void orderOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = this.getClass().getResource("/Thogakade/view/OrderForm.fxml");
 
+        assert resource != null;
+
+        Parent load = (Parent) FXMLLoader.load(resource);
+        this.root.getChildren().clear();
+        this.root.getChildren().add(load);
     }
 
     public void itemOnAction(ActionEvent actionEvent) throws IOException {

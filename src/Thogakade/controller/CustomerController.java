@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CustomerController implements Initializable {
@@ -27,6 +28,17 @@ public class CustomerController implements Initializable {
     public TextField txtName;
     public TextField txtSalary;
     public TableView tblCustomer;
+
+    public static Customer searchCustomer(String customerId) throws SQLException, ClassNotFoundException {
+        PreparedStatement stm=DBConnection.getInstance().getConnection().prepareStatement("Select * From Customer where id=?");
+        stm.setObject(1,customerId);
+        ResultSet rst=  stm.executeQuery();
+        if(rst.next()){
+            Customer customer=new Customer(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4));
+            return customer;
+        }
+        return null;
+    }
 
     public void btnAddOnACtion(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try{
@@ -147,5 +159,18 @@ public class CustomerController implements Initializable {
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static ArrayList<String> getAllCustomerIds() throws ClassNotFoundException, SQLException{
+
+        ResultSet rst  = DBConnection.getInstance().getConnection()
+                .prepareStatement("SELECT id FROM Customer")
+                .executeQuery();
+        ArrayList<String> idSet= new ArrayList<>();
+        System.out.println();
+        while (rst.next()) {
+            idSet.add(rst.getString(1));
+        }
+        return idSet;
     }
 }
