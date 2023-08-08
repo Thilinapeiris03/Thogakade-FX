@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ItemController implements Initializable {
@@ -52,15 +54,26 @@ public class ItemController implements Initializable {
 
             if(i>0) {
                 System.out.println("Added Success");
-                JOptionPane.showMessageDialog(null, "Added Success");
+                new Alert(Alert.AlertType.CONFIRMATION,"Added Success").show();
             }else {
                 System.out.println("Failed");
 
             }
         }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null,"Added Failed...");
+            new Alert(Alert.AlertType.ERROR,"Added Failed").show();
         }
 
+    }
+
+    public static Item searchItem(String customerId) throws SQLException, ClassNotFoundException {
+        PreparedStatement stm=DBConnection.getInstance().getConnection().prepareStatement("Select * From Item where code=?");
+        stm.setObject(1,customerId);
+        ResultSet rst=  stm.executeQuery();
+        if(rst.next()){
+            Item item=new Item(rst.getString(1),rst.getString(2),rst.getDouble(3),rst.getInt(4));
+            return item;
+        }
+        return null;
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -68,8 +81,6 @@ public class ItemController implements Initializable {
         String description=txtDescription.getText();
         double unitPrice= Double.parseDouble(txtUnitPrice.getText());
         int qtyOnHand= (int) Double.parseDouble(txtQtyOnHand.getText());
-
-        //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
 
         Item item=new Item(code,description,unitPrice,qtyOnHand);
         Connection connection=DBConnection.getInstance().getConnection();
@@ -86,9 +97,10 @@ public class ItemController implements Initializable {
         tblItem.refresh();
         if(i>0) {
             System.out.println("Update Success");
-            JOptionPane.showMessageDialog(null, "Update Success");
+            new Alert(Alert.AlertType.CONFIRMATION,"Update Success").show();
         }else {
             System.out.println("Failed");
+            new Alert(Alert.AlertType.ERROR,"Update Failed").show();
 
         }
     }
@@ -96,8 +108,7 @@ public class ItemController implements Initializable {
     public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         boolean SQL=DBConnection.getInstance().getConnection().createStatement().executeUpdate("Delete from Item where code='"+txtItemcode.getText()+"'")>0;
         if(SQL){
-
-            JOptionPane.showMessageDialog(null,"Delete Success");
+            new Alert(Alert.AlertType.CONFIRMATION,"Delete Success").show();
         }
         loadTable();
         txtItemcode.setText(null);
@@ -150,36 +161,17 @@ public class ItemController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-/*
-    private void setTableValuesToTxt(Item newValue) {
-        txtItemcode.setText(newValue.getItemCode());
-        txtDescription.setText(newValue.getDescription());
-        txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
-        txtQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
-    }
 
-    public void loadTable(){
-        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+    public static ArrayList<String> getAllItemIds() throws ClassNotFoundException, SQLException{
 
-        String SQL="Select * from Item";
-        ObservableList<Item> list = FXCollections.observableArrayList();
-        Connection connection= null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
-
-            Statement statement=connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL);
-            while(resultSet.next()){
-                Item item = new Item(resultSet.getString(1), resultSet.getString(2),resultSet.getDouble(3), resultSet.getInt(4));
-                list.add(item);
-            }
-            tblItem.setItems(list);
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        ResultSet rst  = DBConnection.getInstance().getConnection()
+                .prepareStatement("SELECT code FROM Item")
+                .executeQuery();
+        ArrayList<String> idSet= new ArrayList<>();
+        while (rst.next()) {
+            idSet.add(rst.getString(1));
         }
-    }*/
+        return idSet;
+    }
 
 }

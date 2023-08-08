@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -47,8 +48,6 @@ public class CustomerController implements Initializable {
             String address=txtAddress.getText();
             double salary=Double.parseDouble(txtSalary.getText());
 
-            //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
-
             Customer customer = new Customer(id, name, address, salary);
             Connection connection = DBConnection.getInstance().getConnection();
             String SQL = "Insert into Customer Values(?,?,?,?)";
@@ -62,10 +61,9 @@ public class CustomerController implements Initializable {
             loadTable();
             if (i > 0) {
                 System.out.println("Added Success");
-                JOptionPane.showMessageDialog(null, "Added Success");
+                new Alert(Alert.AlertType.CONFIRMATION,"Added Success").show();
             } else {
                 System.out.println("Failed");
-
             }
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Added Failed");
@@ -79,8 +77,6 @@ public class CustomerController implements Initializable {
         String name=txtName.getText();
         String address=txtAddress.getText();
         double salary=Double.parseDouble(txtSalary.getText());
-
-        //System.out.println(id+"\t"+name+"\t"+address+"\t"+salary);
 
         Customer customer=new Customer(id,name,address,salary);
         Connection connection=DBConnection.getInstance().getConnection();
@@ -96,7 +92,7 @@ public class CustomerController implements Initializable {
         loadTable();
         if(i>0) {
             System.out.println("Update Success");
-            JOptionPane.showMessageDialog(null, "Update Success");
+            new Alert(Alert.AlertType.CONFIRMATION,"Update Success").show();
         }else {
             System.out.println("Failed");
 
@@ -106,8 +102,7 @@ public class CustomerController implements Initializable {
     public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         boolean SQL=DBConnection.getInstance().getConnection().createStatement().executeUpdate("Delete from Customer where id='"+txtId.getText()+"'")>0;
         if(SQL){
-
-            JOptionPane.showMessageDialog(null,"Delete Success");
+            new Alert(Alert.AlertType.CONFIRMATION,"Delete Success").show();
         }
         loadTable();
         txtId.setText(null);
