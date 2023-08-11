@@ -2,170 +2,59 @@ package Thogakade.controller;
 
 import Thogakade.db.DBConnection;
 import Thogakade.model.Customer;
-import Thogakade.model.Item;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.*;
-import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class CustomerController implements Initializable {
-    public TableColumn colId;
-    public TableColumn colSalary;
-    public TableColumn colAddress;
-    public TableColumn colName;
-    public TextField txtId;
-    public TextField txtAddress;
-    public TextField txtName;
-    public TextField txtSalary;
-    public TableView tblCustomer;
+public class CustomerController implements CustomerServiceController{
 
-    public static Customer searchCustomer(String customerId) throws SQLException, ClassNotFoundException {
-        PreparedStatement stm=DBConnection.getInstance().getConnection().prepareStatement("Select * From Customer where id=?");
-        stm.setObject(1,customerId);
-        ResultSet rst=  stm.executeQuery();
-        if(rst.next()){
-            Customer customer=new Customer(rst.getString(1),rst.getString(2),rst.getString(3),rst.getDouble(4));
-            return customer;
-        }
-        return null;
-    }
+    @Override
+    public boolean addCustomer(Customer customer) throws SQLException, ClassNotFoundException {
+        String SQL="Insert into Customer values(?,?,?,?)";
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
-    public void btnAddOnACtion(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        try{
-            String id=txtId.getText();
-            String name=txtName.getText();
-            String address=txtAddress.getText();
-            double salary=Double.parseDouble(txtSalary.getText());
+        preparedStatement.setObject(1,customer.getId());
+        preparedStatement.setObject(2,customer.getName());
+        preparedStatement.setObject(3,customer.getAddress());
+        preparedStatement.setObject(4,customer.getSalary());
 
-            Customer customer = new Customer(id, name, address, salary);
-            Connection connection = DBConnection.getInstance().getConnection();
-            String SQL = "Insert into Customer Values(?,?,?,?)";
-            PreparedStatement pstm = connection.prepareStatement(SQL);
+        return preparedStatement.executeUpdate()>0;
 
-            pstm.setObject(1, customer.getId());
-            pstm.setObject(2, customer.getName());
-            pstm.setObject(3, customer.getAddress());
-            pstm.setObject(4, customer.getSalary());
-            int i = pstm.executeUpdate();
-            loadTable();
-            if (i > 0) {
-                System.out.println("Added Success");
-                new Alert(Alert.AlertType.CONFIRMATION,"Added Success").show();
-            } else {
-                System.out.println("Failed");
-            }
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Added Failed");
-        }
-
-
-    }
-
-    public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String id=txtId.getText();
-        String name=txtName.getText();
-        String address=txtAddress.getText();
-        double salary=Double.parseDouble(txtSalary.getText());
-
-        Customer customer=new Customer(id,name,address,salary);
-        Connection connection=DBConnection.getInstance().getConnection();
-        String SQL="Update Customer Set name=? , address=? , salary=? where id=?";
-        PreparedStatement pstm=connection.prepareStatement(SQL);
-
-
-        pstm.setObject(1,customer.getName());
-        pstm.setObject(2,customer.getAddress());
-        pstm.setObject(3,customer.getSalary());
-        pstm.setObject(4,customer.getId());
-        int i =pstm.executeUpdate();
-        loadTable();
-        if(i>0) {
-            System.out.println("Update Success");
-            new Alert(Alert.AlertType.CONFIRMATION,"Update Success").show();
-        }else {
-            System.out.println("Failed");
-
-        }
-    }
-
-    public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        boolean SQL=DBConnection.getInstance().getConnection().createStatement().executeUpdate("Delete from Customer where id='"+txtId.getText()+"'")>0;
-        if(SQL){
-            new Alert(Alert.AlertType.CONFIRMATION,"Delete Success").show();
-        }
-        loadTable();
-        txtId.setText(null);
-        txtName.setText(null);
-        txtAddress.setText(null);
-        txtSalary.setText(null);
-    }
-
-    public void btnRefreshOnAction(ActionEvent actionEvent) {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        loadTable();
-        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable,
-                                                                        oldValue,
-                                                                        newValue) -> {
-            if(newValue!=null) {
-                setTableValuesToTxt((Customer) newValue);
-            }
-        });
-    }
-
-    private void setTableValuesToTxt(Customer newValue) {
-        txtId.setText(newValue.getId());
-        txtName.setText(newValue.getName());
-        txtAddress.setText(newValue.getAddress());
-        txtSalary.setText(String.valueOf(newValue.getSalary()));
-    }
-
-    public void loadTable(){
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-
-        String SQL="Select * from Customer";
-        ObservableList<Customer> list = FXCollections.observableArrayList();
-        Connection connection= null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
-            Statement statement=connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL);
-            while(resultSet.next()){
-                Customer customer = new Customer(resultSet.getString(1), resultSet.getString(2),resultSet.getString(3), resultSet.getDouble(4));
-                list.add(customer);
-            }
-            tblCustomer.setItems(list);
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
+        String SQL= "Select * From Customer Where id='"+id+"'";
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(SQL);
+        if (resultSet.next()){
+            return new Customer(id,resultSet.getString(2),resultSet.getString(3),resultSet.getDouble(4));
+        }else{
+            return null;
         }
     }
 
-    public static ArrayList<String> getAllCustomerIds() throws ClassNotFoundException, SQLException{
+    @Override
+    public boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
 
-        ResultSet rst  = DBConnection.getInstance().getConnection()
-                .prepareStatement("SELECT id FROM Customer")
-                .executeQuery();
-        ArrayList<String> idSet= new ArrayList<>();
-        System.out.println();
-        while (rst.next()) {
-            idSet.add(rst.getString(1));
-        }
-        return idSet;
+        String SQL="Update Customer set name=?, address=?, salary=? where id=?";
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+        preparedStatement.setObject(1,customer.getName());
+        preparedStatement.setObject(2,customer.getAddress());
+        preparedStatement.setObject(3,customer.getSalary());
+        preparedStatement.setObject(4,customer.getId());
+
+        return preparedStatement.executeUpdate()>0;
+    }
+
+    @Override
+    public boolean deleteCustomer(String id) throws SQLException, ClassNotFoundException {
+        String SQL="Delete From Customer where id='"+id+"'";
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement statement = connection.createStatement();
+        return statement.executeUpdate(SQL)>0;
     }
 }

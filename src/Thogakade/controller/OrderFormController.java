@@ -1,9 +1,6 @@
 package Thogakade.controller;
 
-import Thogakade.db.DBConnection;
 import Thogakade.model.AddCart;
-import Thogakade.model.OrderDetails;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,11 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.table.DefaultTableModel;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +40,7 @@ public class OrderFormController implements Initializable {
     public TableColumn colQty;
 
     private void loadAllCustomerIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> list= CustomerController.getAllCustomerIds();
+        ArrayList<String> list= CustomerFormController.getAllCustomerIds();
         combCustomerId.getItems().addAll(list);
     }
 
@@ -63,7 +56,7 @@ public class OrderFormController implements Initializable {
 
     public void combCustomerIdOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String customerId = combCustomerId.getSelectionModel().getSelectedItem().toString();
-        txtCustomerName.setText(CustomerController.searchCustomer(customerId).getName());
+        txtCustomerName.setText(CustomerFormController.OrderSearchCustomer(customerId).getName());
     }
 
     @Override
@@ -100,13 +93,13 @@ public class OrderFormController implements Initializable {
 
     public void combItemCodeOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String ItemCode = combItemCode.getSelectionModel().getSelectedItem().toString();
-        txtDescription.setText(ItemController.searchItem(ItemCode).getDescription());
-        txtUnitPrice.setText(String.valueOf(ItemController.searchItem(ItemCode).getUnitPrice()));
-        txtQtyOnHand.setText(String.valueOf(ItemController.searchItem(ItemCode).getQtyOnHand()));
+        txtDescription.setText(ItemFormController.searchItem(ItemCode).getDescription());
+        txtUnitPrice.setText(String.valueOf(ItemFormController.searchItem(ItemCode).getUnitPrice()));
+        txtQtyOnHand.setText(String.valueOf(ItemFormController.searchItem(ItemCode).getQtyOnHand()));
     }
 
     private void loadAllItemIds() throws SQLException, ClassNotFoundException {
-        ArrayList<String> list= ItemController.getAllItemIds();
+        ArrayList<String> list= ItemFormController.getAllItemIds();
         combItemCode.getItems().addAll(list);
     }
 

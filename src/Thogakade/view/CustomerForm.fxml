@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="660.0" style="-fx-background-color: #a4b0be;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Thogakade.controller.CustomerController">
+<AnchorPane prefHeight="750.0" prefWidth="660.0" style="-fx-background-color: #a4b0be;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Thogakade.controller.CustomerFormController">
    <children>
       <Label alignment="CENTER" layoutX="-6.0" prefHeight="85.0" prefWidth="667.0" style="-fx-background-color: #747d8c;" text="Customer Form">
          <font>
@@ -27,9 +27,10 @@
       <TextField fx:id="txtAddress" layoutX="64.0" layoutY="204.0" prefHeight="44.0" prefWidth="206.0" promptText=" Address (City)" style="-fx-background-color: #dfe4ea;" />
       <TextField fx:id="txtName" layoutX="328.0" layoutY="118.0" prefHeight="44.0" prefWidth="206.0" promptText="Name" style="-fx-background-color: #dfe4ea;" />
       <TextField fx:id="txtSalary" layoutX="328.0" layoutY="204.0" prefHeight="44.0" prefWidth="206.0" promptText="Salary" style="-fx-background-color: #dfe4ea;" />
-      <Button layoutX="81.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnAddOnACtion" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Add" textFill="WHITE" />
-      <Button layoutX="220.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Update" textFill="WHITE" />
-      <Button layoutX="357.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Delete" textFill="WHITE" />
-      <Button layoutX="500.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Refresh" textFill="WHITE" />
+      <Button layoutX="46.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnAddOnACtion" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Add" textFill="WHITE" />
+      <Button layoutX="161.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Update" textFill="WHITE" />
+      <Button layoutX="399.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Delete" textFill="WHITE" />
+      <Button layoutX="515.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Refresh" textFill="WHITE" />
+      <Button fx:id="btnSearch" layoutX="277.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #57606f;" text="Search" textFill="WHITE" />
    </children>
 </AnchorPane>
