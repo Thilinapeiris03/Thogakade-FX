@@ -1,13 +1,18 @@
 package Thogakade.controller;
 
 import Thogakade.model.AddCart;
+import Thogakade.model.Order;
+import Thogakade.model.OrderDetails;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.table.DefaultTableModel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -156,5 +161,29 @@ public class OrderFormController implements Initializable {
         }else{
             new Alert(Alert.AlertType.ERROR,"Error Found").show();
         }
+    }
+    public ObservableList observableArray =  FXCollections.observableArrayList();
+
+    public void btnPlacePrderOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    String orderId= lblOrderId.getText();
+    String customerId= combCustomerId.getSelectionModel().getSelectedItem().toString();
+    String orderDate=txtOrderDate.getText();
+    ArrayList<OrderDetails>orderDetailList= new ArrayList<>();
+
+        for (AddCart addCart:itemList) {
+            String itemCode= (String) addCart.getItemCode();
+            int orderQty= (int) addCart.getQty();
+            double unitPrice= (double) addCart.getUnitPrice();
+            OrderDetails orderDetail=new OrderDetails(orderId,itemCode,orderQty,unitPrice);
+            orderDetailList.add(orderDetail);
+        }
+
+    Order order = new Order(orderId,orderDate,customerId,orderDetailList);
+
+    boolean isAdded=OrderController.placeOrder(order);
+    if(isAdded) {
+        new Alert(Alert.AlertType.CONFIRMATION,"Added Success...").show();
+    }
+
     }
 }

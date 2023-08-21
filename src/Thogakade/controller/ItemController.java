@@ -3,12 +3,30 @@ package Thogakade.controller;
 import Thogakade.db.DBConnection;
 import Thogakade.model.Customer;
 import Thogakade.model.Item;
+import Thogakade.model.OrderDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ItemController implements ItemServiceController {
+
+    public static boolean updateStock(ArrayList<OrderDetails> list) throws SQLException, ClassNotFoundException {
+        for (OrderDetails orderDetail : list){
+            if(!updateStock(orderDetail)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean updateStock(OrderDetails orderDetails) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("Update Item set qtyOnHand=qtyOnHand-? where code=?");
+        preparedStatement.setObject(1,orderDetails.getQty());
+        preparedStatement.setObject(2,orderDetails.getItemCode());
+        return preparedStatement.executeUpdate()>0;
+    }
 
     @Override
     public boolean addItem(Item item) throws SQLException, ClassNotFoundException {
